@@ -1,7 +1,7 @@
 <template>
   <v-row align="center" justify="center">
     <v-col cols="12" sm="8" md="4" align="center">
-      <v-card width="500" class="elevation-4 text-left" shaped color="yellow">
+      <v-card width="500" class="elevation-4 text-left" shaped color="red">
         <v-card-title>Login</v-card-title>
         <v-card-subtitle>Login to your dashboard</v-card-subtitle>
         <v-card-text>
@@ -39,11 +39,11 @@
             class = "login-button"
             @click="facebookLogin"
             depressed
-            small
+            large
           >
             <v-icon color ="blue" large>
               mdi-facebook
-            </v-icon>&nbsp;Login with Facebook
+            </v-icon>&nbsp;
           </v-btn>
         </v-card-actions>
       </v-card>
