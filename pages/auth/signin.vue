@@ -34,6 +34,17 @@
           <v-btn class="reset-button" @click="forgotPassword" depressed large
             >Forgot Password</v-btn
           >
+
+          <v-btn
+            class = "login-button"
+            @click="facebookLogin"
+            depressed
+            small
+          >
+            <v-icon color ="blue" large>
+              mdi-facebook
+            </v-icon>&nbsp;Login with Facebook
+          </v-btn>
         </v-card-actions>
       </v-card>
       <v-snackbar
@@ -65,10 +76,23 @@ export default {
     login() {
       let that = this
       this.$fire.auth.signInWithEmailAndPassword(this.auth.email, this.auth.password)
-      .catch(function (error){
-        that.snackbarText = error.message
-        that.snackbar = true
-      }).then((user) => {
+        .catch(function (error) {
+          that.snackbarText = error.message
+          that.snackbar = true
+        }).then((user) => {
+        //we are signed in
+        $nuxt.$router.push('/')
+      })
+    },
+
+    facebookLogin(){
+      let that = this
+      const provider = new $nuxt.$fireModule.auth.FacebookAuthProvider()
+      this.$fire.auth.signInWithPopup(provider)
+        .catch(function (error){
+          that.snackbarText = error.message
+          that.snackbar = true
+        }).then((user) => {
         //we are signed in
         $nuxt.$router.push('/')
       })
